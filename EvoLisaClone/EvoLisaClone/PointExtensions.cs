@@ -11,15 +11,7 @@ namespace EvoLisaClone
         private static bool IsColinear(Point first, Point point, int xDifference1, int yDifference1)
         {
             var xDifference2 = point.X - first.X;
-            if (xDifference1 == 0)
-            {
-                return xDifference2 == 0;
-            }
             var yDifference2 = point.Y - first.Y;
-            if (yDifference1 == 0)
-            {
-                return yDifference2 == 0;
-            }
             return (xDifference1 * yDifference2) == (xDifference2 * yDifference1);
         }
 
