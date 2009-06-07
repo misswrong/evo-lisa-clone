@@ -46,10 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DrawnPolygon.cs" />
-    <Compile Include="PointExtensions.cs" />
-    <Compile Include="Polygon.cs" />
-    <Compile Include="VectorImage.cs" />
+    <Compile Include="ColoredTriangle.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

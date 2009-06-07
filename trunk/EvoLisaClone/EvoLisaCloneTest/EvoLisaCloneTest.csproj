@@ -47,11 +47,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DrawnPolygonTest.cs" />
-    <Compile Include="PointExtensionsTest.cs" />
-    <Compile Include="PolygonTest.cs" />
+    <Compile Include="ColoredTriangleTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="VectorImageTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\EvoLisaClone\EvoLisaClone.csproj">

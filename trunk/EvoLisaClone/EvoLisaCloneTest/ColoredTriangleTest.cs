@@ -7,11 +7,11 @@ namespace EvoLisaCloneTest
     
     
     /// <summary>
-    ///This is a test class for PointExtensionsTest and is intended
-    ///to contain all PointExtensionsTest Unit Tests
+    ///This is a test class for ColoredTriangleTest and is intended
+    ///to contain all ColoredTriangleTest Unit Tests
     ///</summary>
     [TestClass()]
-    public class PointExtensionsTest
+    public class ColoredTriangleTest
     {
 
 
@@ -65,58 +65,26 @@ namespace EvoLisaCloneTest
 
 
         /// <summary>
-        ///A test for GetHashCode
+        ///A test for Vertices
         ///</summary>
         [TestMethod()]
-        public void GetHashCodeTest()
+        public void VerticesTest()
         {
-            PointF point = new PointF();
-            int expected = 0;
-            int actual;
-            actual = PointExtensions.GetHashCode(point);
+            ColoredTriangle target = new ColoredTriangle();
+            Point[] expected = null;
+            Point[] actual;
+            target.Vertices = expected;
+            actual = target.Vertices;
             Assert.AreEqual(expected, actual);
         }
 
         /// <summary>
-        ///A test for AreEqual
+        ///A test for ColoredTriangle Constructor
         ///</summary>
         [TestMethod()]
-        public void AreEqualTest1()
+        public void ColoredTriangleConstructorTest()
         {
-            PointF pointA = new PointF();
-            PointF pointB = new PointF();
-            bool expected = true;
-            bool actual;
-            actual = PointExtensions.AreEqual(pointA, pointB);
-            Assert.AreEqual(expected, actual);
-        }
-
-        /// <summary>
-        ///A test for AreEqual
-        ///</summary>
-        [TestMethod()]
-        public void AreEqualTest2()
-        {
-            PointF pointA = new PointF(1f, 0f);
-            PointF pointB = new PointF();
-            bool expected = false;
-            bool actual;
-            actual = PointExtensions.AreEqual(pointA, pointB);
-            Assert.AreEqual(expected, actual);
-        }
-
-        /// <summary>
-        ///A test for AreEqual
-        ///</summary>
-        [TestMethod()]
-        public void AreEqualTest3()
-        {
-            PointF pointA = new PointF(0f, 1f);
-            PointF pointB = new PointF();
-            bool expected = false;
-            bool actual;
-            actual = PointExtensions.AreEqual(pointA, pointB);
-            Assert.AreEqual(expected, actual);
+            ColoredTriangle target = new ColoredTriangle();
         }
     }
 }
