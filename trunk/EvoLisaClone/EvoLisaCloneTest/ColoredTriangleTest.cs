@@ -68,12 +68,44 @@ namespace EvoLisaCloneTest
         ///A test for Vertices
         ///</summary>
         [TestMethod()]
-        public void VerticesTest()
+        public void VerticesTest1()
         {
             ColoredTriangle target = new ColoredTriangle();
-            Point[] expected = null;
+            Point[] input = null;
+            Point[] expected = input;
             Point[] actual;
             target.Vertices = expected;
+            actual = target.Vertices;
+            Assert.AreEqual(expected, actual);
+        }
+
+        /// <summary>
+        ///A test for Vertices
+        ///</summary>
+        [TestMethod()]
+        public void VerticesTest2()
+        {
+            ColoredTriangle target = new ColoredTriangle();
+            Point[] input = new Point[] { new Point(0, 0), new Point(0, 1), new Point(1, 0) };
+            Point[] expected = input;
+            Point[] actual;
+            target.Vertices = expected;
+            actual = target.Vertices;
+            Assert.AreEqual(expected, actual);
+        }
+
+        /// <summary>
+        ///A test for Vertices
+        ///Expected null because the three points are colinear
+        ///</summary>
+        [TestMethod()]
+        public void VerticesTest3()
+        {
+            ColoredTriangle target = new ColoredTriangle();
+            Point[] input = new Point[] { new Point(0, 0), new Point(0, 1), new Point(0, 2) };
+            Point[] expected = null;
+            Point[] actual;
+            target.Vertices = input;
             actual = target.Vertices;
             Assert.AreEqual(expected, actual);
         }
