@@ -18,7 +18,14 @@ namespace EvoLisaClone
             }
             set
             {
-                this.vertices = value;
+                if (PointExtensions.AreColinear(value))
+                {
+                    this.vertices = null;
+                }
+                else
+                {
+                    this.vertices = value;
+                }
             }
         }
     }
