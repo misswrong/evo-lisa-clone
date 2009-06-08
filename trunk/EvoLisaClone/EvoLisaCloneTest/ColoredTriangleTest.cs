@@ -118,5 +118,117 @@ namespace EvoLisaCloneTest
         {
             ColoredTriangle target = new ColoredTriangle();
         }
+
+        /// <summary>
+        ///A test for Brush
+        ///</summary>
+        [TestMethod()]
+        public void BrushTest()
+        {
+            ColoredTriangle target = new ColoredTriangle(); // TODO: Initialize to an appropriate value
+            Brush expected = null; // TODO: Initialize to an appropriate value
+            Brush actual;
+            target.Brush = expected;
+            actual = target.Brush;
+            Assert.AreEqual(expected, actual);
+        }
+
+        /// <summary>
+        ///A test for Equals
+        ///</summary>
+        [TestMethod()]
+        public void EqualsTest1()
+        {
+            ColoredTriangle target = new ColoredTriangle(); // TODO: Initialize to an appropriate value
+            ColoredTriangle other = null; // TODO: Initialize to an appropriate value
+            bool expected = false; // TODO: Initialize to an appropriate value
+            bool actual;
+            actual = target.Equals(other);
+            Assert.AreEqual(expected, actual);
+        }
+
+        /// <summary>
+        ///A test for Equals
+        ///</summary>
+        [TestMethod()]
+        public void EqualsTest2()
+        {
+            ColoredTriangle target = new ColoredTriangle();
+            ColoredTriangle other = new ColoredTriangle();
+            bool expected = true;
+            bool actual;
+            actual = target.Equals(other);
+            Assert.AreEqual(expected, actual);
+        }
+
+        /// <summary>
+        ///A test for Equals
+        ///</summary>
+        [TestMethod()]
+        public void EqualsTest3()
+        {
+            ColoredTriangle target = new ColoredTriangle() { Brush = Brushes.AliceBlue };
+            ColoredTriangle other = new ColoredTriangle();
+            bool expected = false;
+            bool actual;
+            actual = target.Equals(other);
+            Assert.AreEqual(expected, actual);
+        }
+
+        /// <summary>
+        ///A test for Equals
+        ///</summary>
+        [TestMethod()]
+        public void EqualsTest4()
+        {
+            ColoredTriangle target = new ColoredTriangle() { Brush = Brushes.AliceBlue };
+            ColoredTriangle other = new ColoredTriangle() { Brush = Brushes.AliceBlue };
+            bool expected = true;
+            bool actual;
+            actual = target.Equals(other);
+            Assert.AreEqual(expected, actual);
+        }
+
+        /// <summary>
+        ///A test for Equals
+        ///</summary>
+        [TestMethod()]
+        public void EqualsTest5()
+        {
+            ColoredTriangle target = new ColoredTriangle() { Vertices = new Point[] { new Point(0, 0), new Point(0, 1), new Point(1, 0) } };
+            ColoredTriangle other = new ColoredTriangle();
+            bool expected = false;
+            bool actual;
+            actual = target.Equals(other);
+            Assert.AreEqual(expected, actual);
+        }
+
+        /// <summary>
+        ///A test for Equals
+        ///</summary>
+        [TestMethod()]
+        public void EqualsTest6()
+        {
+            ColoredTriangle target = new ColoredTriangle() { Vertices = new Point[] { new Point(0, 0), new Point(0, 1), new Point(1, 0) } };
+            ColoredTriangle other = new ColoredTriangle() { Vertices = new Point[] { new Point(0, 0), new Point(0, 1), new Point(1, 0) } };
+            bool expected = true;
+            bool actual;
+            actual = target.Equals(other);
+            Assert.AreEqual(expected, actual);
+        }
+
+        /// <summary>
+        ///A test for Equals
+        ///</summary>
+        [TestMethod()]
+        public void EqualsTest7()
+        {
+            ColoredTriangle target = new ColoredTriangle() { Vertices = new Point[] { new Point(2, 1), new Point(0, 2), new Point(1, 0) } };
+            ColoredTriangle other = new ColoredTriangle() { Vertices = new Point[] { new Point(2, 0), new Point(1, 2), new Point(1, 0) } };
+            bool expected = false;
+            bool actual;
+            actual = target.Equals(other);
+            Assert.AreEqual(expected, actual);
+        }
     }
 }

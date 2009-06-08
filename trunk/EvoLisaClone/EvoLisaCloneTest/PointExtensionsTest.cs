@@ -193,5 +193,73 @@ namespace EvoLisaCloneTest
             actual = PointExtensions.AreColinear(points);
             Assert.AreEqual(expected, actual);
         }
+
+        /// <summary>
+        ///A test for Equals
+        ///</summary>
+        [TestMethod()]
+        public void EqualsTest1()
+        {
+            Point pointA = new Point();
+            Point pointB = new Point();
+            bool expected = true;
+            bool actual;
+            actual = PointExtensions.Equals(pointA, pointB);
+            Assert.AreEqual(expected, actual);
+        }
+
+        /// <summary>
+        ///A test for Equals
+        ///</summary>
+        [TestMethod()]
+        public void EqualsTest2()
+        {
+            Point pointA = new Point(1, 0);
+            Point pointB = new Point();
+            bool expected = false;
+            bool actual;
+            actual = PointExtensions.Equals(pointA, pointB);
+            Assert.AreEqual(expected, actual);
+        }
+
+        /// <summary>
+        ///A test for Equals
+        ///</summary>
+        [TestMethod()]
+        public void EqualsTest3()
+        {
+            Point pointA = new Point(1, 0);
+            Point pointB = new Point(0, 1);
+            bool expected = false;
+            bool actual;
+            actual = PointExtensions.Equals(pointA, pointB);
+            Assert.AreEqual(expected, actual);
+        }
+
+        /// <summary>
+        ///A test for GetHashCode
+        ///</summary>
+        [TestMethod()]
+        public void GetHashCodeTest1()
+        {
+            Point point = new Point();
+            int expected = 0;
+            int actual;
+            actual = PointExtensions.GetHashCode(point);
+            Assert.AreEqual(expected, actual);
+        }
+
+        /// <summary>
+        ///A test for GetHashCode
+        ///</summary>
+        [TestMethod()]
+        public void GetHashCodeTest2()
+        {
+            var verticesA = new Point[] { new Point(2, 2), new Point(1, 0) };
+            var verticesB = new Point[] { new Point(1, 2), new Point(2, 0) };
+            var SumA = PointExtensions.GetHashCode(verticesA[0]) + PointExtensions.GetHashCode(verticesA[1]);
+            var SumB = PointExtensions.GetHashCode(verticesB[0]) + PointExtensions.GetHashCode(verticesB[1]);
+            Assert.AreNotEqual(SumA, SumB);
+        }
     }
 }
