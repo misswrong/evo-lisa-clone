@@ -40,14 +40,12 @@ namespace EvoLisaClone
 
         public static bool Equals(Point pointA, Point pointB)
         {
-            if (ReferenceEquals(null, pointA)) return ReferenceEquals(null, pointB);
-            if (ReferenceEquals(pointA, pointB)) return true;
             return PointExtensions.GetHashCode(pointA) == PointExtensions.GetHashCode(pointB);
         }
 
         public static int GetHashCode(Point point)
         {
-            return point.X.GetHashCode() << 16 + point.Y.GetHashCode();
+            return ((point.X << 16) | (point.X >> 16)) ^ point.Y;
         }
     }
 }
