@@ -255,19 +255,6 @@ namespace EvoLisaCloneTest
         [TestMethod()]
         public void GetHashCodeTest2()
         {
-            var verticesA = new Point[] { new Point(2, 2), new Point(1, 0) };
-            var verticesB = new Point[] { new Point(1, 2), new Point(2, 0) };
-            var sumA = PointExtensions.GetHashCode(verticesA[0]) + PointExtensions.GetHashCode(verticesA[1]);
-            var sumB = PointExtensions.GetHashCode(verticesB[0]) + PointExtensions.GetHashCode(verticesB[1]);
-            Assert.AreNotEqual(sumA, sumB);
-        }
-
-        /// <summary>
-        ///A test for GetHashCode
-        ///</summary>
-        [TestMethod()]
-        public void GetHashCodeTest3()
-        {
             var pointA = new Point((1 << 16) + 1, 0);
             var pointB = new Point(1, 0);
             Assert.AreNotEqual(PointExtensions.GetHashCode(pointA), PointExtensions.GetHashCode(pointB));
@@ -277,7 +264,7 @@ namespace EvoLisaCloneTest
         ///A test for GetHashCode
         ///</summary>
         [TestMethod()]
-        public void GetHashCodeTest4()
+        public void GetHashCodeTest3()
         {
             var pointA = new Point(0, (1 << 16) + 1);
             var pointB = new Point(0, 1);
@@ -288,7 +275,7 @@ namespace EvoLisaCloneTest
         ///A test for GetHashCode
         ///</summary>
         [TestMethod()]
-        public void GetHashCodeTest5()
+        public void GetHashCodeTest4()
         {
             var pointA = new Point(0, 1 << 16);
             var pointB = new Point(1, 0);

@@ -52,6 +52,7 @@
     <Compile Include="ColoredTriangleTest.cs" />
     <Compile Include="PointExtensionsTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="VectorDrawingTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\EvoLisaClone\EvoLisaClone.csproj">
