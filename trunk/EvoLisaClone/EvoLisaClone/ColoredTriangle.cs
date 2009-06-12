@@ -3,14 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Drawing;
+using System.Collections;
 
 namespace EvoLisaClone
 {
     public class ColoredTriangle : IEquatable<ColoredTriangle>
     {
-        private Point[] vertices;
+        private IEnumerable<Point> vertices;
 
-        public Point[] Vertices
+        public IEnumerable<Point> Vertices
         {
             get
             {
@@ -18,7 +19,7 @@ namespace EvoLisaClone
             }
             set
             {
-                if (PointExtensions.AreColinear(value))
+                if (PointExtensions.AreCollinear(value))
                 {
                     this.vertices = null;
                 }

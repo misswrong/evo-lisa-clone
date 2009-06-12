@@ -20,17 +20,22 @@ namespace EvoLisaClone
         /// </summary>
         /// <param name="points">The points.</param>
         /// <returns>Whether the points are colinear or not.</returns>
-        public static bool AreColinear(Point[] points)
+        public static bool AreCollinear(IEnumerable<Point> points)
         {
-            if (points == null || points.Length < 3)
+            if (ReferenceEquals(null, points))
             {
                 return true;
             }
-            var xDifference1 = points[1].X - points[0].X;
-            var yDifference1 = points[1].Y - points[0].Y;
-            for (var index = 2; index < points.Length; index++)
+            var pointsArray = points.ToArray();
+            if (pointsArray.Length < 3)
             {
-                if(!IsColinear(points[0], points[index], xDifference1, yDifference1))
+                return true;
+            }
+            var xDifference1 = pointsArray[1].X - pointsArray[0].X;
+            var yDifference1 = pointsArray[1].Y - pointsArray[0].Y;
+            for (var index = 2; index < pointsArray.Length; index++)
+            {
+                if (!IsColinear(pointsArray[0], pointsArray[index], xDifference1, yDifference1))
                 {
                     return false;
                 }

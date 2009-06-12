@@ -70,9 +70,8 @@ namespace EvoLisaCloneTest
         {
             VectorDrawing target = new VectorDrawing(); // TODO: Initialize to an appropriate value
             ColoredTriangle[] expected = null; // TODO: Initialize to an appropriate value
-            ColoredTriangle[] actual;
             target.Vectors = expected;
-            actual = target.Vectors;
+            var actual = target.Vectors;
             Assert.AreEqual(expected, actual);
             Assert.Inconclusive("Verify the correctness of this test method.");
         }

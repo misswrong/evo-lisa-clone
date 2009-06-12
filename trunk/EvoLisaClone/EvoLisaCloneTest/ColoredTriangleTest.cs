@@ -72,10 +72,9 @@ namespace EvoLisaCloneTest
         {
             ColoredTriangle target = new ColoredTriangle();
             Point[] input = null;
-            Point[] expected = input;
-            Point[] actual;
+            var expected = input;
             target.Vertices = expected;
-            actual = target.Vertices;
+            var actual = target.Vertices;
             Assert.AreEqual(expected, actual);
         }
 
@@ -86,11 +85,10 @@ namespace EvoLisaCloneTest
         public void VerticesTest2()
         {
             ColoredTriangle target = new ColoredTriangle();
-            Point[] input = new Point[] { new Point(0, 0), new Point(0, 1), new Point(1, 0) };
-            Point[] expected = input;
-            Point[] actual;
+            var input = new Point[] { new Point(0, 0), new Point(0, 1), new Point(1, 0) };
+            var expected = input;
             target.Vertices = expected;
-            actual = target.Vertices;
+            var actual = target.Vertices;
             Assert.AreEqual(expected, actual);
         }
 
@@ -104,9 +102,8 @@ namespace EvoLisaCloneTest
             ColoredTriangle target = new ColoredTriangle();
             Point[] input = new Point[] { new Point(0, 0), new Point(0, 1), new Point(0, 2) };
             Point[] expected = null;
-            Point[] actual;
             target.Vertices = input;
-            actual = target.Vertices;
+            var actual = target.Vertices;
             Assert.AreEqual(expected, actual);
         }
 
