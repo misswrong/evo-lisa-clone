@@ -7,7 +7,7 @@ namespace EvoLisaClone
 {
     public class VectorDrawing : IEquatable<VectorDrawing>
     {
-        public ColoredTriangle[] Vectors { get; set; }
+        public IEnumerable<ColoredTriangle> Vectors { get; set; }
 
         public bool Equals(VectorDrawing other)
         {

@@ -65,132 +65,132 @@ namespace EvoLisaCloneTest
 
 
         /// <summary>
-        ///A test for AreColinear
+        ///A test for AreCollinear
         ///</summary>
         [TestMethod()]
-        public void AreColinearTest1()
+        public void AreCollinearTest1()
         {
             Point[] points = null;
             bool expected = true;
             bool actual;
-            actual = PointExtensions.AreColinear(points);
+            actual = PointExtensions.AreCollinear(points);
             Assert.AreEqual(expected, actual);
         }
 
         /// <summary>
-        ///A test for AreColinear
+        ///A test for AreCollinear
         ///</summary>
         [TestMethod()]
-        public void AreColinearTest2()
+        public void AreCollinearTest2()
         {
             Point[] points = new Point[] { new Point(0, 0), new Point(1, 1), new Point(1, 2) };
             bool expected = false;
             bool actual;
-            actual = PointExtensions.AreColinear(points);
+            actual = PointExtensions.AreCollinear(points);
             Assert.AreEqual(expected, actual);
         }
 
         /// <summary>
-        ///A test for AreColinear
+        ///A test for AreCollinear
         ///</summary>
         [TestMethod()]
-        public void AreColinearTest3()
+        public void AreCollinearTest3()
         {
             Point[] points = new Point[] { new Point(0, 0), new Point(1, 1), new Point(2, 2) };
             bool expected = true;
             bool actual;
-            actual = PointExtensions.AreColinear(points);
+            actual = PointExtensions.AreCollinear(points);
             Assert.AreEqual(expected, actual);
         }
 
         /// <summary>
-        ///A test for AreColinear
+        ///A test for AreCollinear
         ///</summary>
         [TestMethod()]
-        public void AreColinearTest4()
+        public void AreCollinearTest4()
         {
             Point[] points = new Point[] { new Point(0, 0), new Point(1, 0), new Point(0, 1) };
             bool expected = false;
             bool actual;
-            actual = PointExtensions.AreColinear(points);
+            actual = PointExtensions.AreCollinear(points);
             Assert.AreEqual(expected, actual);
         }
 
         /// <summary>
-        ///A test for AreColinear
+        ///A test for AreCollinear
         ///</summary>
         [TestMethod()]
-        public void AreColinearTest5()
+        public void AreCollinearTest5()
         {
             Point[] points = new Point[] { new Point(0, 0), new Point(0, 1), new Point(1, 0) };
             bool expected = false;
             bool actual;
-            actual = PointExtensions.AreColinear(points);
+            actual = PointExtensions.AreCollinear(points);
             Assert.AreEqual(expected, actual);
         }
 
         /// <summary>
-        ///A test for AreColinear
+        ///A test for AreCollinear
         ///</summary>
         [TestMethod()]
-        public void AreColinearTest6()
+        public void AreCollinearTest6()
         {
             Point[] points = new Point[] { new Point(0, 0), new Point(1, 0), new Point(2, 0) };
             bool expected = true;
             bool actual;
-            actual = PointExtensions.AreColinear(points);
+            actual = PointExtensions.AreCollinear(points);
             Assert.AreEqual(expected, actual);
         }
 
         /// <summary>
-        ///A test for AreColinear
+        ///A test for AreCollinear
         ///</summary>
         [TestMethod()]
-        public void AreColinearTest7()
+        public void AreCollinearTest7()
         {
             Point[] points = new Point[] { new Point(0, 0), new Point(0, 1), new Point(0, 2) };
             bool expected = true;
             bool actual;
-            actual = PointExtensions.AreColinear(points);
+            actual = PointExtensions.AreCollinear(points);
             Assert.AreEqual(expected, actual);
         }
 
         /// <summary>
-        ///A test for AreColinear
+        ///A test for AreCollinear
         ///</summary>
         [TestMethod()]
-        public void AreColinearTest8()
+        public void AreCollinearTest8()
         {
             Point[] points = new Point[] { new Point(0, 0), new Point(0, 1), new Point(0, 2), new Point(1, 3) };
             bool expected = false;
             bool actual;
-            actual = PointExtensions.AreColinear(points);
+            actual = PointExtensions.AreCollinear(points);
             Assert.AreEqual(expected, actual);
         }
 
         /// <summary>
-        ///A test for AreColinear
+        ///A test for AreCollinear
         ///</summary>
         [TestMethod()]
-        public void AreColinearTest9()
+        public void AreCollinearTest9()
         {
             Point[] points = new Point[0] {};
             bool expected = true;
             bool actual;
-            actual = PointExtensions.AreColinear(points);
+            actual = PointExtensions.AreCollinear(points);
             Assert.AreEqual(expected, actual);
         }
 
         /// <summary>
-        ///A test for AreColinear
+        ///A test for AreCollinear
         ///</summary>
         [TestMethod()]
-        public void AreColinearTest10()
+        public void AreCollinearTest10()
         {
             Point[] points = new Point[] { new Point(0, 0), new Point(3, 4), new Point(1, 1) };
             bool expected = false;
             bool actual;
-            actual = PointExtensions.AreColinear(points);
+            actual = PointExtensions.AreCollinear(points);
             Assert.AreEqual(expected, actual);
         }
 
