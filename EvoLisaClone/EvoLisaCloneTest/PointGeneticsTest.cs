@@ -1,6 +1,7 @@
 ﻿using EvoLisaClone;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Drawing;
+using System;
 
 namespace EvoLisaCloneTest
 {
@@ -124,6 +125,32 @@ namespace EvoLisaCloneTest
             var first = target.Create(width, height);
             var second = target.Create(width, height);
             Assert.AreNotEqual(first, second);
+        }
+
+        /// <summary>
+        ///A test for Create
+        ///</summary>
+        [TestMethod()]
+        [ExpectedException(typeof(ArgumentOutOfRangeException), "Argument 'width' must equal to or greater than 1.")]
+        public void CreateTest4()
+        {
+            PointGenetics target = PointGenetics.Instance;
+            var width = 0;
+            var height = 1;
+            var actual = target.Create(width, height);
+        }
+
+        /// <summary>
+        ///A test for Create
+        ///</summary>
+        [TestMethod()]
+        [ExpectedException(typeof(ArgumentOutOfRangeException), "Argument 'height' must equal to or greater than 1.")]
+        public void CreateTest5()
+        {
+            PointGenetics target = PointGenetics.Instance;
+            var width = 1;
+            var height = 0;
+            var actual = target.Create(width, height);
         }
     }
 }

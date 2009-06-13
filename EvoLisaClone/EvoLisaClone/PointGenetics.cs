@@ -31,6 +31,14 @@ namespace EvoLisaClone
 
         public Point Create(int width, int height)
         {
+            if (width < 1)
+            {
+                throw new ArgumentOutOfRangeException("Argument 'width' must equal to or greater than 1.");
+            }
+            if (height < 1)
+            {
+                throw new ArgumentOutOfRangeException("Argument 'height' must equal to or greater than 1.");
+            }
             return new Point(random.Next(width), random.Next(height));
         }
     }
