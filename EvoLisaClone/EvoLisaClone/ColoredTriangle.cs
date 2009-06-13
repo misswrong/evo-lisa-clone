@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Drawing;
-using System.Collections;
+using System.Security.Cryptography;
 
 namespace EvoLisaClone
 {
@@ -55,11 +53,15 @@ namespace EvoLisaClone
             var hashCode = 0;
             if (!ReferenceEquals(null, this.Brush))
             {
-                hashCode += this.Brush.GetHashCode();
+                hashCode = this.Brush.GetHashCode();
             }
             if (!ReferenceEquals(null, this.Vertices))
             {
-                hashCode += this.Vertices.Sum(a => PointExtensions.GetHashCode(a));
+                var hasher = new SHA256Managed();
+                foreach(var vertice in this.Vertices)
+                {
+                    hashCode += BitConverter.ToInt32(hasher.ComputeHash(BitConverter.GetBytes(vertice.GetHashCode())), 0);
+                }
             }
             return hashCode;
         }

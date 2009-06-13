@@ -122,8 +122,8 @@ namespace EvoLisaCloneTest
         [TestMethod()]
         public void BrushTest()
         {
-            ColoredTriangle target = new ColoredTriangle(); // TODO: Initialize to an appropriate value
-            Brush expected = null; // TODO: Initialize to an appropriate value
+            ColoredTriangle target = new ColoredTriangle();
+            Brush expected = null;
             Brush actual;
             target.Brush = expected;
             actual = target.Brush;
@@ -136,9 +136,9 @@ namespace EvoLisaCloneTest
         [TestMethod()]
         public void EqualsTest1()
         {
-            ColoredTriangle target = new ColoredTriangle(); // TODO: Initialize to an appropriate value
-            ColoredTriangle other = null; // TODO: Initialize to an appropriate value
-            bool expected = false; // TODO: Initialize to an appropriate value
+            ColoredTriangle target = new ColoredTriangle();
+            ColoredTriangle other = null;
+            bool expected = false;
             bool actual;
             actual = target.Equals(other);
             Assert.AreEqual(expected, actual);
@@ -220,8 +220,22 @@ namespace EvoLisaCloneTest
         [TestMethod()]
         public void EqualsTest7()
         {
-            ColoredTriangle target = new ColoredTriangle() { Vertices = new Point[] { new Point(2, 1), new Point(0, 2), new Point(1, 0) } };
-            ColoredTriangle other = new ColoredTriangle() { Vertices = new Point[] { new Point(2, 0), new Point(1, 2), new Point(1, 0) } };
+            ColoredTriangle target = new ColoredTriangle() { Vertices = new Point[] { new Point(0, 1), new Point(1, 0), new Point(2, 3) } };
+            ColoredTriangle other = new ColoredTriangle() { Vertices = new Point[] { new Point(0, 0), new Point(1, 1), new Point(2, 3) } };
+            bool expected = false;
+            bool actual;
+            actual = target.Equals(other);
+            Assert.AreEqual(expected, actual);
+        }
+
+        /// <summary>
+        ///A test for Equals
+        ///</summary>
+        [TestMethod()]
+        public void EqualsTest8()
+        {
+            ColoredTriangle target = new ColoredTriangle() { Vertices = new Point[] { new Point(0, 1), new Point(1, 1), new Point(0, 0) } };
+            ColoredTriangle other = new ColoredTriangle() { Vertices = new Point[] { new Point(0, 2), new Point(1, 2), new Point(0, 0) } };
             bool expected = false;
             bool actual;
             actual = target.Equals(other);
