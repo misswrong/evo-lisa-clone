@@ -1,5 +1,6 @@
 ﻿using EvoLisaClone;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Drawing;
 namespace EvoLisaCloneTest
 {
     
@@ -68,12 +69,11 @@ namespace EvoLisaCloneTest
         [TestMethod()]
         public void VectorsTest()
         {
-            VectorDrawing target = new VectorDrawing(); // TODO: Initialize to an appropriate value
-            ColoredTriangle[] expected = null; // TODO: Initialize to an appropriate value
+            VectorDrawing target = new VectorDrawing();
+            ColoredTriangle[] expected = null;
             target.Vectors = expected;
             var actual = target.Vectors;
             Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Verify the correctness of this test method.");
         }
 
         /// <summary>
@@ -82,27 +82,11 @@ namespace EvoLisaCloneTest
         [TestMethod()]
         public void GetHashCodeTest()
         {
-            VectorDrawing target = new VectorDrawing(); // TODO: Initialize to an appropriate value
-            int expected = 0; // TODO: Initialize to an appropriate value
+            VectorDrawing target = new VectorDrawing();
+            int expected = 0;
             int actual;
             actual = target.GetHashCode();
             Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Verify the correctness of this test method.");
-        }
-
-        /// <summary>
-        ///A test for Equals
-        ///</summary>
-        [TestMethod()]
-        public void EqualsTest1()
-        {
-            VectorDrawing target = new VectorDrawing(); // TODO: Initialize to an appropriate value
-            object obj = null; // TODO: Initialize to an appropriate value
-            bool expected = false; // TODO: Initialize to an appropriate value
-            bool actual;
-            actual = target.Equals(obj);
-            Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Verify the correctness of this test method.");
         }
 
         /// <summary>
@@ -111,13 +95,82 @@ namespace EvoLisaCloneTest
         [TestMethod()]
         public void EqualsTest()
         {
-            VectorDrawing target = new VectorDrawing(); // TODO: Initialize to an appropriate value
-            VectorDrawing other = null; // TODO: Initialize to an appropriate value
-            bool expected = false; // TODO: Initialize to an appropriate value
+            VectorDrawing target = new VectorDrawing();
+            object obj = null;
+            bool expected = false;
+            bool actual;
+            actual = target.Equals(obj);
+            Assert.AreEqual(expected, actual);
+        }
+
+        /// <summary>
+        ///A test for Equals
+        ///</summary>
+        [TestMethod()]
+        public void EqualsVectorDrawingTest1()
+        {
+            VectorDrawing target = new VectorDrawing() { Vectors = new ColoredTriangle[] { new ColoredTriangle() { Brush = Brushes.Black, Vertices = new Point[] { new Point(0, 0), new Point(1, 1), new Point(0, 1) } } } };
+            VectorDrawing other = null;
+            bool expected = false;
             bool actual;
             actual = target.Equals(other);
             Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Verify the correctness of this test method.");
+        }
+
+        /// <summary>
+        ///A test for Equals
+        ///</summary>
+        [TestMethod()]
+        public void EqualsVectorDrawingTest2()
+        {
+            VectorDrawing target = new VectorDrawing() { Vectors = new ColoredTriangle[] { new ColoredTriangle() { Brush = Brushes.Black, Vertices = new Point[] { new Point(0, 0), new Point(1, 1), new Point(0, 1) } } } };
+            VectorDrawing other = new VectorDrawing() { Vectors = new ColoredTriangle[] { new ColoredTriangle() { Brush = Brushes.Black, Vertices = new Point[] { new Point(0, 0), new Point(1, 1), new Point(0, 1) } } } };
+            bool expected = true;
+            bool actual;
+            actual = target.Equals(other);
+            Assert.AreEqual(expected, actual);
+        }
+
+        /// <summary>
+        ///A test for Equals
+        ///</summary>
+        [TestMethod()]
+        public void EqualsVectorDrawingTest3()
+        {
+            VectorDrawing target = new VectorDrawing() { Vectors = new ColoredTriangle[] { new ColoredTriangle() { Brush = Brushes.Black, Vertices = new Point[] { new Point(0, 0), new Point(1, 1), new Point(0, 1) } } } };
+            VectorDrawing other = new VectorDrawing() { Vectors = new ColoredTriangle[] { new ColoredTriangle() { Brush = Brushes.Black, Vertices = new Point[] { new Point(0, 0), new Point(1, 1), new Point(1, 0) } } } };
+            bool expected = true;
+            bool actual;
+            actual = target.Equals(other);
+            Assert.AreEqual(expected, actual);
+        }
+
+        /// <summary>
+        ///A test for Equals
+        ///</summary>
+        [TestMethod()]
+        public void EqualsVectorDrawingTest4()
+        {
+            VectorDrawing target = new VectorDrawing() { Vectors = new ColoredTriangle[] { new ColoredTriangle() { Brush = Brushes.Black, Vertices = new Point[] { new Point(0, 0), new Point(1, 1), new Point(0, 1) } } } };
+            VectorDrawing other = new VectorDrawing() { Vectors = new ColoredTriangle[] { new ColoredTriangle() { Brush = Brushes.Gray, Vertices = new Point[] { new Point(0, 0), new Point(1, 1), new Point(0, 1) } } } };
+            bool expected = false;
+            bool actual;
+            actual = target.Equals(other);
+            Assert.AreEqual(expected, actual);
+        }
+
+        /// <summary>
+        ///A test for Equals
+        ///</summary>
+        [TestMethod()]
+        public void EqualsVectorDrawingTest5()
+        {
+            VectorDrawing target = new VectorDrawing() { Vectors = new ColoredTriangle[] { new ColoredTriangle() { Brush = Brushes.Black, Vertices = new Point[] { new Point(0, 0), new Point(1, 1), new Point(0, 1) } } } };
+            VectorDrawing other = new VectorDrawing() { Vectors = new ColoredTriangle[] { new ColoredTriangle() { Brush = Brushes.Black, Vertices = new Point[] { new Point(0, 0), new Point(1, 1), new Point(0, 1) } }, new ColoredTriangle() { Brush = Brushes.Black, Vertices = new Point[] { new Point(0, 0), new Point(1, 1), new Point(0, 1) } }, new ColoredTriangle() { Brush = Brushes.Black, Vertices = new Point[] { new Point(0, 0), new Point(1, 1), new Point(0, 1) } } } };
+            bool expected = false;
+            bool actual;
+            actual = target.Equals(other);
+            Assert.AreEqual(expected, actual);
         }
 
         /// <summary>
@@ -127,7 +180,6 @@ namespace EvoLisaCloneTest
         public void VectorDrawingConstructorTest()
         {
             VectorDrawing target = new VectorDrawing();
-            Assert.Inconclusive("TODO: Implement code to verify target");
         }
     }
 }

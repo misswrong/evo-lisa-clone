@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace EvoLisaClone
 {
@@ -13,7 +12,7 @@ namespace EvoLisaClone
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            return Equals(other.Vectors, Vectors);
+            return this.GetHashCode() == other.GetHashCode();
         }
 
         public override bool Equals(object obj)
@@ -26,7 +25,13 @@ namespace EvoLisaClone
 
         public override int GetHashCode()
         {
-            return (Vectors != null ? Vectors.GetHashCode() : 0);
+            if (ReferenceEquals(null, this.Vectors) || Vectors.Count() == 0) return 0;
+            var hashCode = 0;
+            foreach (var triangle in this.Vectors)
+            {
+                hashCode += triangle.GetHashCode();
+            }
+            return hashCode;
         }
     }
 }
