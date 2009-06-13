@@ -131,7 +131,7 @@ namespace EvoLisaCloneTest
         ///A test for Create
         ///</summary>
         [TestMethod()]
-        [ExpectedException(typeof(ArgumentOutOfRangeException), "Argument 'width' must equal to or greater than 1.")]
+        [ExpectedException(typeof(ArgumentOutOfRangeException), "Argument 'width' must be greater than 0.")]
         public void CreateTest4()
         {
             PointGenetics target = PointGenetics.Instance;
@@ -144,7 +144,7 @@ namespace EvoLisaCloneTest
         ///A test for Create
         ///</summary>
         [TestMethod()]
-        [ExpectedException(typeof(ArgumentOutOfRangeException), "Argument 'height' must equal to or greater than 1.")]
+        [ExpectedException(typeof(ArgumentOutOfRangeException), "Argument 'height' must be greater than 0.")]
         public void CreateTest5()
         {
             PointGenetics target = PointGenetics.Instance;
