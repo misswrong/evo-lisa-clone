@@ -51,9 +51,11 @@
   <ItemGroup>
     <Compile Include="ColoredTriangle.cs" />
     <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="GraphicsExtensions.cs" />
     <Compile Include="PointExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="VectorDrawing.cs" />
+    <Compile Include="VectorDrawingFitness.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="EvoLisaClone.pfx" />
