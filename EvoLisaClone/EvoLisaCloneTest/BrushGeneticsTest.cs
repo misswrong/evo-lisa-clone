@@ -1,19 +1,17 @@
-﻿using System;
-using System.Drawing;
-using System.Linq;
-using EvoLisaClone;
+﻿using EvoLisaClone;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Drawing;
 
 namespace EvoLisaCloneTest
 {
     
     
     /// <summary>
-    ///This is a test class for ColoredTriangleGeneticsTest and is intended
-    ///to contain all ColoredTriangleGeneticsTest Unit Tests
+    ///This is a test class for BrushGeneticsTest and is intended
+    ///to contain all BrushGeneticsTest Unit Tests
     ///</summary>
     [TestClass()]
-    public class ColoredTriangleGeneticsTest
+    public class BrushGeneticsTest
     {
 
 
@@ -72,59 +70,30 @@ namespace EvoLisaCloneTest
         [TestMethod()]
         public void InstanceTest()
         {
-            ColoredTriangleGenetics actual;
-            actual = ColoredTriangleGenetics.Instance;
+            BrushGenetics actual;
+            actual = BrushGenetics.Instance;
         }
 
         /// <summary>
         ///A test for Create
         ///</summary>
         [TestMethod()]
-        [ExpectedException(typeof(ArgumentOutOfRangeException), "Argument 'width' must be greater than 1.")]
-        public void CreateTest1()
+        public void CreateTest()
         {
-            var target = ColoredTriangleGenetics.Instance;
-            int width = 1;
-            int height = 2;
-            var actual = target.Create(width, height);
+            var target = BrushGenetics.Instance;
+            var first = target.Create();
+            var second = target.Create();
+            Assert.AreNotEqual(first, second);
         }
 
         /// <summary>
-        ///A test for Create
-        ///</summary>
-        [TestMethod()]
-        [ExpectedException(typeof(ArgumentOutOfRangeException), "Argument height' must be greater than 1.")]
-        public void CreateTest2()
-        {
-            var target = ColoredTriangleGenetics.Instance;
-            int width = 2;
-            int height = 1;
-            var actual = target.Create(width, height);
-        }
-
-        /// <summary>
-        ///A test for Create
-        ///</summary>
-        [TestMethod()]
-        public void CreateTest3()
-        {
-            var target = ColoredTriangleGenetics.Instance;
-            int width = 2;
-            int height = 2;
-            ColoredTriangle actual;
-            actual = target.Create(width, height);
-            Assert.AreEqual(3, actual.Vertices.Count());
-            Assert.IsNotNull(actual.Brush);
-        }
-
-        /// <summary>
-        ///A test for ColoredTriangleGenetics Constructor
+        ///A test for BrushGenetics Constructor
         ///</summary>
         [TestMethod()]
         [DeploymentItem("EvoLisaClone.dll")]
-        public void ColoredTriangleGeneticsConstructorTest()
+        public void BrushGeneticsConstructorTest()
         {
-            ColoredTriangleGenetics_Accessor target = new ColoredTriangleGenetics_Accessor();
+            BrushGenetics_Accessor target = new BrushGenetics_Accessor();
         }
     }
 }
