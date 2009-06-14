@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BrushGenetics.cs" />
     <Compile Include="ColoredTriangle.cs" />
     <Compile Include="ColoredTriangleGenetics.cs" />
     <Compile Include="GlobalSuppressions.cs" />

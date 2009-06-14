@@ -43,11 +43,9 @@ namespace EvoLisaClone
                     points.Add(PointGenetics.Instance.Create(width, height));
                 }
             }
-            var bytes = new byte[4];
-            random.NextBytes(bytes);
             return new ColoredTriangle()
                 {
-                    Brush = new SolidBrush(Color.FromArgb(BitConverter.ToInt32(bytes, 0))),
+                    Brush = BrushGenetics.Instance.Create(),
                     Vertices = points
                 };
         }
