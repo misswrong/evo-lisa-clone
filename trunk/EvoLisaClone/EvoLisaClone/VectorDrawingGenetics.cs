@@ -53,5 +53,16 @@ namespace EvoLisaClone
                 return distance;
             }
         }
+
+        public VectorDrawing Create(int width, int height)
+        {
+            return new VectorDrawing()
+                {
+                    Vectors = new ColoredTriangle[] 
+                    {
+                        ColoredTriangleGenetics.Instance.Create(width, height)
+                    }
+                };
+        }
     }
 }
