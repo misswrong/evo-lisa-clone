@@ -7,11 +7,11 @@ namespace EvoLisaCloneTest
     
     
     /// <summary>
-    ///This is a test class for VectorDrawingFitnessTest and is intended
-    ///to contain all VectorDrawingFitnessTest Unit Tests
+    ///This is a test class for VectorDrawingGeneticsTest and is intended
+    ///to contain all VectorDrawingGeneticsTest Unit Tests
     ///</summary>
     [TestClass()]
-    public class VectorDrawingFitnessTest
+    public class VectorDrawingGeneticsTest
     {
 
 
@@ -65,29 +65,16 @@ namespace EvoLisaCloneTest
 
 
         /// <summary>
-        ///A test for Original
-        ///</summary>
-        [TestMethod()]
-        public void OriginalTest()
-        {
-            VectorDrawingFitness target = new VectorDrawingFitness();
-            Bitmap expected = null;
-            target.Original = expected;
-            var actual = target.Original;
-            Assert.AreEqual(expected, actual);
-        }
-
-        /// <summary>
         ///A test for Distance
         ///</summary>
         [TestMethod()]
         public void DistanceTest1()
         {
-            VectorDrawingFitness target = new VectorDrawingFitness();
+            VectorDrawingGenetics target = VectorDrawingGenetics.Instance;
             VectorDrawing vectorDrawing = null;
             long expected = 0;
             long actual;
-            actual = target.CalculateDistance(vectorDrawing);
+            actual = target.CalculateDistance(vectorDrawing, null);
             Assert.AreEqual(expected, actual);
         }
 
@@ -116,10 +103,10 @@ namespace EvoLisaCloneTest
             };
             using (var bitmap = new Bitmap(1, 1))
             {
-                VectorDrawingFitness target = new VectorDrawingFitness() { Original = bitmap };
+                VectorDrawingGenetics target = VectorDrawingGenetics.Instance;
                 long expected = color.R + color.G + color.B;
                 long actual;
-                actual = target.CalculateDistance(vectorDrawing);
+                actual = target.CalculateDistance(vectorDrawing, bitmap);
                 Assert.AreEqual(expected, actual);
             }
         }
@@ -152,21 +139,12 @@ namespace EvoLisaCloneTest
                 {
                     GraphicsExtensions.RasterizeVectorDrawing(graphics, vectorDrawing);
                 }
-                VectorDrawingFitness target = new VectorDrawingFitness() { Original = bitmap };
+                VectorDrawingGenetics target = VectorDrawingGenetics.Instance;
                 long expected = 0;
                 long actual;
-                actual = target.CalculateDistance(vectorDrawing);
+                actual = target.CalculateDistance(vectorDrawing, bitmap);
                 Assert.AreEqual(expected, actual);
             }
-        }
-
-        /// <summary>
-        ///A test for VectorDrawingFitness Constructor
-        ///</summary>
-        [TestMethod()]
-        public void VectorDrawingFitnessConstructorTest()
-        {
-            VectorDrawingFitness target = new VectorDrawingFitness();
         }
     }
 }
