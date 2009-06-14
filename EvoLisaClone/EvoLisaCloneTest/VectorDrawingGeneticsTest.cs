@@ -146,5 +146,29 @@ namespace EvoLisaCloneTest
                 Assert.AreEqual(expected, actual);
             }
         }
+
+        /// <summary>
+        ///A test for VectorDrawingGenetics Constructor
+        ///</summary>
+        [TestMethod()]
+        [DeploymentItem("EvoLisaClone.dll")]
+        public void VectorDrawingGeneticsConstructorTest()
+        {
+            VectorDrawingGenetics_Accessor target = new VectorDrawingGenetics_Accessor();
+        }
+
+        /// <summary>
+        ///A test for Create
+        ///</summary>
+        [TestMethod()]
+        public void CreateTest()
+        {
+            var target = VectorDrawingGenetics.Instance;
+            var width = 2;
+            var heigth = 2;
+            var first = target.Create(width, heigth);
+            var second = target.Create(width, heigth);
+            Assert.AreNotEqual(first, second);
+        }
     }
 }
