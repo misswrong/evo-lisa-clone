@@ -1,6 +1,7 @@
-﻿using EvoLisaClone;
+﻿using System.Drawing;
+using System.Linq;
+using EvoLisaClone;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Drawing;
 
 namespace EvoLisaCloneTest
 {
@@ -166,9 +167,68 @@ namespace EvoLisaCloneTest
             var target = VectorDrawingGenetics.Instance;
             var width = 2;
             var heigth = 2;
-            var first = target.Create(width, heigth);
-            var second = target.Create(width, heigth);
+            var length = 1;
+            var first = target.Create(width, heigth, length);
+            var second = target.Create(width, heigth, length);
             Assert.AreNotEqual(first, second);
+        }
+
+        /// <summary>
+        ///A test for CrossOver
+        ///</summary>
+        [TestMethod()]
+        public void CrossOverTest1()
+        {
+            var target = VectorDrawingGenetics.Instance;
+            var width = 2;
+            var heigth = 2;
+            var length = 1;
+            var drawingA = target.Create(width, heigth, length);
+            var drawingB = target.Create(width, heigth, length);
+            var actual = target.CrossOver(drawingA, drawingB);
+            Assert.AreEqual(drawingA, actual);
+        }
+
+        /// <summary>
+        ///A test for CrossOver
+        ///</summary>
+        [TestMethod()]
+        public void CrossOverTest2()
+        {
+            var target = VectorDrawingGenetics.Instance;
+            var width = 2;
+            var heigth = 2;
+            var length = 2;
+            var drawingA = VectorDrawingGenetics.Instance.Create(width, heigth, length);
+            var drawingB = VectorDrawingGenetics.Instance.Create(width, heigth, length);
+            var actual = target.CrossOver(drawingA, drawingB);
+            Assert.AreNotEqual(drawingA, actual);
+            Assert.AreNotEqual(drawingB, actual);
+            Assert.AreEqual(drawingA.Vectors.Count(), actual.Vectors.Count());
+            Assert.AreEqual(drawingB.Vectors.Count(), actual.Vectors.Count());
+            var intersection = actual.Vectors.Intersect(drawingA.Vectors.Union(drawingB.Vectors));
+            Assert.IsTrue(intersection.SequenceEqual(actual.Vectors));
+        }
+
+        /// <summary>
+        ///A test for Mutate
+        ///</summary>
+        [TestMethod()]
+        public void MutateTest()
+        {
+            var target = VectorDrawingGenetics.Instance;
+            var width = 2;
+            var heigth = 2;
+            var length = 2;
+            var drawing = VectorDrawingGenetics.Instance.Create(width, heigth, length);
+            var first = target.Mutate(drawing, width, heigth);
+            var second = target.Mutate(first, width, heigth);
+            Assert.IsNotNull(first);
+            Assert.IsNotNull(second);
+            Assert.AreNotEqual(drawing, first);
+            Assert.AreNotEqual(first, second);
+            Assert.AreNotEqual(drawing.Vectors.Count(), first.Vectors.Count());
+            Assert.AreNotEqual(first.Vectors.Count(), second.Vectors.Count());
         }
     }
 }
