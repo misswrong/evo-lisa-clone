@@ -166,10 +166,10 @@ namespace EvoLisaCloneTest
         {
             var target = VectorDrawingGenetics.Instance;
             var width = 2;
-            var heigth = 2;
+            var height = 2;
             var length = 1;
-            var first = target.Create(width, heigth, length);
-            var second = target.Create(width, heigth, length);
+            var first = target.Create(width, height, length);
+            var second = target.Create(width, height, length);
             Assert.AreNotEqual(first, second);
         }
 
@@ -181,10 +181,10 @@ namespace EvoLisaCloneTest
         {
             var target = VectorDrawingGenetics.Instance;
             var width = 2;
-            var heigth = 2;
+            var height = 2;
             var length = 1;
-            var drawingA = target.Create(width, heigth, length);
-            var drawingB = target.Create(width, heigth, length);
+            var drawingA = target.Create(width, height, length);
+            var drawingB = target.Create(width, height, length);
             var actual = target.CrossOver(drawingA, drawingB);
             Assert.AreEqual(drawingA, actual);
         }
@@ -197,10 +197,10 @@ namespace EvoLisaCloneTest
         {
             var target = VectorDrawingGenetics.Instance;
             var width = 2;
-            var heigth = 2;
+            var height = 2;
             var length = 2;
-            var drawingA = VectorDrawingGenetics.Instance.Create(width, heigth, length);
-            var drawingB = VectorDrawingGenetics.Instance.Create(width, heigth, length);
+            var drawingA = VectorDrawingGenetics.Instance.Create(width, height, length);
+            var drawingB = VectorDrawingGenetics.Instance.Create(width, height, length);
             var actual = target.CrossOver(drawingA, drawingB);
             Assert.AreNotEqual(drawingA, actual);
             Assert.AreNotEqual(drawingB, actual);
@@ -218,11 +218,11 @@ namespace EvoLisaCloneTest
         {
             var target = VectorDrawingGenetics.Instance;
             var width = 2;
-            var heigth = 2;
+            var height = 2;
             var length = 2;
-            var drawing = VectorDrawingGenetics.Instance.Create(width, heigth, length);
-            var first = target.Mutate(drawing, width, heigth);
-            var second = target.Mutate(first, width, heigth);
+            var drawing = VectorDrawingGenetics.Instance.Create(width, height, length);
+            var first = target.Mutate(drawing, width, height);
+            var second = target.Mutate(first, width, height);
             Assert.IsNotNull(first);
             Assert.IsNotNull(second);
             Assert.AreNotEqual(drawing, first);
