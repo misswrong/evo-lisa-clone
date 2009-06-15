@@ -270,17 +270,5 @@ namespace EvoLisaCloneTest
             var pointB = new Point(0, 1);
             Assert.AreNotEqual(PointExtensions.GetHashCode(pointA), PointExtensions.GetHashCode(pointB));
         }
-
-        /// <summary>
-        ///A test for GetHashCode
-        ///</summary>
-        [TestMethod()]
-        public void GetHashCodeTest4()
-        {
-            var pointA = new Point(0, 1 << 16);
-            var pointB = new Point(1, 0);
-            //We know this test fails, but there is no known better implementation for this method
-            //Assert.AreNotEqual(PointExtensions.GetHashCode(pointA), PointExtensions.GetHashCode(pointB));
-        }
     }
 }
