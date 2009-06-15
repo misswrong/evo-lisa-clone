@@ -4,6 +4,7 @@ using EvoLisaClone;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.IO;
 using System.Drawing.Imaging;
+using System.Diagnostics;
 
 namespace EvoLisaCloneTest
 {
@@ -79,7 +80,7 @@ namespace EvoLisaCloneTest
             using (var bitmap = new Bitmap(width, height))
             {
                 long distance = long.MaxValue;
-                var actual = target.Clone(bitmap, distance);
+                var actual = target.Clone(bitmap, distance, 1);
                 Assert.IsTrue(actual.Vectors.Any());
             }
         }
@@ -96,7 +97,7 @@ namespace EvoLisaCloneTest
             using (var bitmap = new Bitmap(width, height))
             {
                 long expectedDistance = 0L;
-                var actual = target.Clone(bitmap, expectedDistance);
+                var actual = target.Clone(bitmap, expectedDistance, 1);
                 var actualDistance = VectorDrawingGenetics.Instance.CalculateDistance(actual, bitmap);
                 Assert.IsTrue(actualDistance <= expectedDistance);
             }
@@ -118,7 +119,7 @@ namespace EvoLisaCloneTest
                     graphics.DrawLine(Pens.Orange, new Point(0, 0), new Point(1, 1));
                 }
                 long expectedDistance = 512;
-                var actual = target.Clone(bitmap, expectedDistance);
+                var actual = target.Clone(bitmap, expectedDistance, 1);
                 var actualDistance = VectorDrawingGenetics.Instance.CalculateDistance(actual, bitmap);
                 Assert.IsTrue(actualDistance <= expectedDistance);
             }
@@ -135,7 +136,9 @@ namespace EvoLisaCloneTest
             using (var bitmap = new Bitmap(fileName))
             {
                 long expectedDistance = 1024 * 16;
-                var actual = target.Clone(bitmap, expectedDistance);
+                var stopwatch = Stopwatch.StartNew();
+                var actual = target.Clone(bitmap, expectedDistance, 1);
+                stopwatch.Stop();
                 var actualDistance = VectorDrawingGenetics.Instance.CalculateDistance(actual, bitmap);
                 Assert.IsTrue(actualDistance <= expectedDistance);
                 using (var cloneBitmap = new Bitmap(bitmap.Width, bitmap.Height))
@@ -159,8 +162,10 @@ namespace EvoLisaCloneTest
             var fileName = Path.Combine(testContextInstance.TestDeploymentDir, "smile.png");
             using (var bitmap = new Bitmap(fileName))
             {
-                long expectedDistance = 1024 * 16;
-                var actual = target.Clone(bitmap, expectedDistance, 4);
+                long expectedDistance = 1024 * 32;
+                var stopwatch = Stopwatch.StartNew();
+                var actual = target.Clone(bitmap, expectedDistance, 2);
+                stopwatch.Stop();
                 var actualDistance = VectorDrawingGenetics.Instance.CalculateDistance(actual, bitmap);
                 Assert.IsTrue(actualDistance <= expectedDistance);
                 using (var cloneBitmap = new Bitmap(bitmap.Width, bitmap.Height))
