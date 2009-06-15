@@ -49,6 +49,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BitmapClonerTest.cs" />
     <Compile Include="BrushGeneticsTest.cs" />
     <Compile Include="ColoredTriangleGeneticsTest.cs" />
     <Compile Include="ColoredTriangleTest.cs" />
@@ -67,6 +68,9 @@
   </ItemGroup>
   <ItemGroup>
     <Shadow Include="Test References\EvoLisaClone.accessor" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Data\smile.png" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
