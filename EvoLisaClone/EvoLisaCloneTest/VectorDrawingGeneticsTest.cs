@@ -2,6 +2,7 @@
 using System.Linq;
 using EvoLisaClone;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 
 namespace EvoLisaCloneTest
 {
@@ -208,6 +209,23 @@ namespace EvoLisaCloneTest
             Assert.AreEqual(drawingB.Vectors.Count(), actual.Vectors.Count());
             var intersection = actual.Vectors.Intersect(drawingA.Vectors.Union(drawingB.Vectors));
             Assert.IsTrue(intersection.SequenceEqual(actual.Vectors));
+        }
+
+        /// <summary>
+        ///A test for CrossOver
+        ///</summary>
+        [TestMethod()]
+        public void CrossOverTest3()
+        {
+            var target = VectorDrawingGenetics.Instance;
+            var width = 2;
+            var height = 2;
+            var lengthA = 2;
+            var lengthB = 3;
+            var drawingA = VectorDrawingGenetics.Instance.Create(width, height, lengthA);
+            var drawingB = VectorDrawingGenetics.Instance.Create(width, height, lengthB);
+            var actual = target.CrossOver(drawingA, drawingB);
+            Assert.IsTrue(actual.Vectors.Count() == Math.Max(lengthA, lengthB));
         }
 
         /// <summary>

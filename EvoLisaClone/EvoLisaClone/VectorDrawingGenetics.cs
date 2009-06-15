@@ -70,9 +70,12 @@ namespace EvoLisaClone
         public VectorDrawing CrossOver(VectorDrawing drawingA, VectorDrawing drawingB)
         {
             var triangles = new List<ColoredTriangle>();
-            for (var i = 0; i < drawingA.Vectors.Count(); i++)
+            var maxLength = Math.Max(drawingA.Vectors.Count(), drawingB.Vectors.Count());
+            var minLength = Math.Min(drawingA.Vectors.Count(), drawingB.Vectors.Count());
+            var aIsBigger = drawingA.Vectors.Count() == maxLength;
+            for (var i = 0; i < maxLength; i++)
             {
-                if (i%2 == 0)
+                if ((i%2 == 0 && i < minLength) || (i >= minLength && aIsBigger))
                 {
                     triangles.Add(drawingA.Vectors.ElementAt(i));
                 }

@@ -160,7 +160,7 @@ namespace EvoLisaCloneTest
             using (var bitmap = new Bitmap(fileName))
             {
                 long expectedDistance = 1024 * 16;
-                var actual = target.Clone(bitmap, expectedDistance, 2);
+                var actual = target.Clone(bitmap, expectedDistance, 4);
                 var actualDistance = VectorDrawingGenetics.Instance.CalculateDistance(actual, bitmap);
                 Assert.IsTrue(actualDistance <= expectedDistance);
                 using (var cloneBitmap = new Bitmap(bitmap.Width, bitmap.Height))
