@@ -32,15 +32,13 @@ namespace EvoLisaClone
 
         public ColoredTriangle Create(int width, int height)
         {
-            if (width < 2) throw new ArgumentOutOfRangeException("Argument 'width' must be greater than 1.");
-            if (height < 2) throw new ArgumentOutOfRangeException("Argument 'height' must be greater than 1.");
             var points = new List<Point>();
             while (PointExtensions.AreCollinear(points))
             {
                 points.Clear();
                 for (var i = 0; i < NumberOfVertices; i++)
                 {
-                    points.Add(PointGenetics.Instance.Create(width, height));
+                    points.Add(PointGenetics.Instance.Create(width + 1, height + 1));
                 }
             }
             return new ColoredTriangle()
