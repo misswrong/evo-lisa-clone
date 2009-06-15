@@ -37,21 +37,26 @@ namespace EvoLisaClone
             var minDistance = 0L;
             while (!population.Where(a => a.Value <= distance).Any())
             {
-                if (populationSize == 1)
+                for (var i = 1; i < populationSize; i++)
                 {
-                    var child = VectorDrawingGenetics.Instance.Mutate(population.First().Key, bitmap.Height, bitmap.Width);
+                    VectorDrawing child = new VectorDrawing();
+                    do
+                    {
+                        child = VectorDrawingGenetics.Instance.CrossOver(population.ElementAt(i - 1).Key, population.ElementAt(i).Key);
+                        child = VectorDrawingGenetics.Instance.Mutate(child, bitmap.Width, bitmap.Height);
+                    } while (population.Keys.Contains(child));
                     var childDistance = VectorDrawingGenetics.Instance.CalculateDistance(child, bitmap);
                     population.Add(child, childDistance);
                 }
-                else
                 {
-                    for (var i = 1; i < populationSize; i++)
+                    VectorDrawing child = new VectorDrawing();
+                    do
                     {
-                        var child = VectorDrawingGenetics.Instance.CrossOver(population.ElementAt(i - 1).Key, population.ElementAt(i).Key);
+                        child = VectorDrawingGenetics.Instance.CrossOver(population.First().Key, population.Last().Key);
                         child = VectorDrawingGenetics.Instance.Mutate(child, bitmap.Width, bitmap.Height);
-                        var childDistance = VectorDrawingGenetics.Instance.CalculateDistance(child, bitmap);
-                        population.Add(child, childDistance);
-                    }
+                    } while (population.Keys.Contains(child));
+                    var childDistance = VectorDrawingGenetics.Instance.CalculateDistance(child, bitmap);
+                    population.Add(child, childDistance);
                 }
                 minDistance = population.Min(a => a.Value);
                 while (population.Count() > populationSize)
