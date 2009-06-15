@@ -80,33 +80,7 @@ namespace EvoLisaCloneTest
         ///A test for Create
         ///</summary>
         [TestMethod()]
-        [ExpectedException(typeof(ArgumentOutOfRangeException), "Argument 'width' must be greater than 1.")]
         public void CreateTest1()
-        {
-            var target = ColoredTriangleGenetics.Instance;
-            int width = 1;
-            int height = 2;
-            var actual = target.Create(width, height);
-        }
-
-        /// <summary>
-        ///A test for Create
-        ///</summary>
-        [TestMethod()]
-        [ExpectedException(typeof(ArgumentOutOfRangeException), "Argument height' must be greater than 1.")]
-        public void CreateTest2()
-        {
-            var target = ColoredTriangleGenetics.Instance;
-            int width = 2;
-            int height = 1;
-            var actual = target.Create(width, height);
-        }
-
-        /// <summary>
-        ///A test for Create
-        ///</summary>
-        [TestMethod()]
-        public void CreateTest3()
         {
             var target = ColoredTriangleGenetics.Instance;
             int width = 2;
@@ -115,6 +89,26 @@ namespace EvoLisaCloneTest
             actual = target.Create(width, height);
             Assert.AreEqual(3, actual.Vertices.Count());
             Assert.IsNotNull(actual.Brush);
+        }
+
+        /// <summary>
+        ///A test for Create
+        ///</summary>
+        [TestMethod()]
+        public void CreateTest2()
+        {
+            var target = ColoredTriangleGenetics.Instance;
+            int width = 2;
+            int height = 2;
+            for (var i = 0; i < 100; i++)
+            {
+                var actual = target.Create(width, height);
+                if (actual.Vertices.Where(a => (a.X == width) || (a.Y == height)).Any())
+                {
+                    return;
+                }
+            }
+            Assert.Fail();
         }
 
         /// <summary>
