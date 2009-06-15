@@ -54,6 +54,7 @@
     <Compile Include="ColoredTriangleGenetics.cs" />
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="GraphicsExtensions.cs" />
+    <Compile Include="BitmapCloner.cs" />
     <Compile Include="PointExtensions.cs" />
     <Compile Include="PointGenetics.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
