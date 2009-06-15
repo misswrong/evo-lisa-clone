@@ -138,7 +138,32 @@ namespace EvoLisaCloneTest
                 var actual = target.Clone(bitmap, expectedDistance);
                 var actualDistance = VectorDrawingGenetics.Instance.CalculateDistance(actual, bitmap);
                 Assert.IsTrue(actualDistance <= expectedDistance);
-                using(var cloneBitmap = new Bitmap(bitmap.Width, bitmap.Height))
+                using (var cloneBitmap = new Bitmap(bitmap.Width, bitmap.Height))
+                {
+                    using (var graphics = Graphics.FromImage(cloneBitmap))
+                    {
+                        GraphicsExtensions.RasterizeVectorDrawing(graphics, actual);
+                    }
+                    cloneBitmap.Save("smile.bmp", ImageFormat.Bmp);
+                }
+            }
+        }
+
+        /// <summary>
+        ///A test for Clone
+        ///</summary>
+        [TestMethod()]
+        public void CloneTest5()
+        {
+            BitmapCloner target = new BitmapCloner();
+            var fileName = Path.Combine(testContextInstance.TestDeploymentDir, "smile.png");
+            using (var bitmap = new Bitmap(fileName))
+            {
+                long expectedDistance = 1024 * 16;
+                var actual = target.Clone(bitmap, expectedDistance, 2);
+                var actualDistance = VectorDrawingGenetics.Instance.CalculateDistance(actual, bitmap);
+                Assert.IsTrue(actualDistance <= expectedDistance);
+                using (var cloneBitmap = new Bitmap(bitmap.Width, bitmap.Height))
                 {
                     using (var graphics = Graphics.FromImage(cloneBitmap))
                     {
