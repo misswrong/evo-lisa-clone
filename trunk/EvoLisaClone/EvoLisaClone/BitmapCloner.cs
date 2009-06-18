@@ -10,50 +10,51 @@ namespace EvoLisaClone
     {
         public VectorDrawing Clone(Bitmap bitmap, long distance, int populationSize)
         {
-            var population = new Dictionary<VectorDrawing, long>();
+            var population = new Dictionary<long, VectorDrawing>();
             while (population.Count < populationSize)
             {
                 var newborn = VectorDrawingGenetics.Instance.Create(bitmap.Width, bitmap.Height, 1);
                 var newbornDistance = VectorDrawingGenetics.Instance.CalculateDistance(newborn, bitmap);
-                population.Add(newborn, newbornDistance);
+                population.Add(newbornDistance, newborn);
             }
             var minDistance = 0L;
-            while (!population.Where(a => a.Value <= distance).Any())
+            while (!population.Where(a => a.Key <= distance).Any())
             {
+                long childDistance;
+                VectorDrawing child = new VectorDrawing();
                 if (populationSize == 1)
                 {
-                    var child = VectorDrawingGenetics.Instance.Mutate(population.First().Key, bitmap.Height, bitmap.Width);
-                    var childDistance = VectorDrawingGenetics.Instance.CalculateDistance(child, bitmap);
-                    population.Add(child, childDistance);
+                    do
+                    {
+                        child = VectorDrawingGenetics.Instance.Mutate(population.First().Value, bitmap.Width, bitmap.Height);
+                        childDistance = VectorDrawingGenetics.Instance.CalculateDistance(child, bitmap);
+                    } while (population.Keys.Contains(childDistance));
+                    population.Add(childDistance, child);
                 }
                 else
                 {
                     for (var i = 1; i < populationSize; i++)
                     {
-                        VectorDrawing child = new VectorDrawing();
                         do
                         {
-                            child = VectorDrawingGenetics.Instance.CrossOver(population.ElementAt(i - 1).Key, population.ElementAt(i).Key);
+                            child = VectorDrawingGenetics.Instance.CrossOver(population.ElementAt(i - 1).Value, population.ElementAt(i).Value);
                             child = VectorDrawingGenetics.Instance.Mutate(child, bitmap.Width, bitmap.Height);
-                        } while (population.Keys.Contains(child));
-                        var childDistance = VectorDrawingGenetics.Instance.CalculateDistance(child, bitmap);
-                        population.Add(child, childDistance);
+                            childDistance = VectorDrawingGenetics.Instance.CalculateDistance(child, bitmap);
+                        } while (population.Keys.Contains(childDistance));
+                        population.Add(childDistance, child);
                     }
+                    do
                     {
-                        VectorDrawing child = new VectorDrawing();
-                        do
-                        {
-                            child = VectorDrawingGenetics.Instance.CrossOver(population.First().Key, population.Last().Key);
-                            child = VectorDrawingGenetics.Instance.Mutate(child, bitmap.Width, bitmap.Height);
-                        } while (population.Keys.Contains(child));
-                        var childDistance = VectorDrawingGenetics.Instance.CalculateDistance(child, bitmap);
-                        population.Add(child, childDistance);
-                    }
+                        child = VectorDrawingGenetics.Instance.CrossOver(population.First().Value, population.Last().Value);
+                        child = VectorDrawingGenetics.Instance.Mutate(child, bitmap.Width, bitmap.Height);
+                        childDistance = VectorDrawingGenetics.Instance.CalculateDistance(child, bitmap);
+                    } while (population.Keys.Contains(childDistance));
+                    population.Add(childDistance, child);
                 }
-                minDistance = population.Min(a => a.Value);
+                minDistance = population.Min(a => a.Key);
                 while (population.Count() > populationSize)
                 {
-                    var toBeRemoved = population.Where(a => a.Value != minDistance);
+                    var toBeRemoved = population.Where(a => a.Key != minDistance);
                     if (toBeRemoved.Any())
                     {
                         population.Remove(toBeRemoved.First().Key);
@@ -64,7 +65,7 @@ namespace EvoLisaClone
                     }
                 }
             }
-            return population.Where(a => a.Value == minDistance).First().Key;
+            return population[minDistance];
         }
     }
 }

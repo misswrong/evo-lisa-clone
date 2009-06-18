@@ -18,7 +18,7 @@ namespace EvoLisaProfiler
             var fileName = "smile.png";
             using (var bitmap = new Bitmap(fileName))
             {
-                long expectedDistance = 1024 * 22;
+                long expectedDistance = 1024 * 21;
                 var actual = target.Clone(bitmap, expectedDistance, 2);
                 var actualDistance = VectorDrawingGenetics.Instance.CalculateDistance(actual, bitmap);
                 using (var cloneBitmap = new Bitmap(bitmap.Width, bitmap.Height))
