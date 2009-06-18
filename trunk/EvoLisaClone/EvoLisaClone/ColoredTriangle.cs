@@ -57,7 +57,7 @@ namespace EvoLisaClone
             }
             if (!ReferenceEquals(null, this.Vertices))
             {
-                var hasher = new SHA256Managed();
+                var hasher = new SHA1Managed();
                 foreach(var vertice in this.Vertices)
                 {
                     hashCode += BitConverter.ToInt32(hasher.ComputeHash(BitConverter.GetBytes(vertice.GetHashCode())), 0);
