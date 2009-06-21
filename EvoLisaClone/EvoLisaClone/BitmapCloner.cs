@@ -41,14 +41,7 @@ namespace EvoLisaClone
                 while (population.Count() > populationSize)
                 {
                     var toBeRemoved = population.Where(a => a.Key != minDistance);
-                    if (toBeRemoved.Any())
-                    {
-                        population.Remove(toBeRemoved.First().Key);
-                    }
-                    else
-                    {
-                        population.Remove(population.First().Key);
-                    }
+                    population.Remove(toBeRemoved.First().Key);
                 }
             }
             return population.OrderBy(a => a.Key).First().Value;
