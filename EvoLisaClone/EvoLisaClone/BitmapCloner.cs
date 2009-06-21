@@ -22,32 +22,21 @@ namespace EvoLisaClone
             {
                 long childDistance;
                 VectorDrawing child = new VectorDrawing();
-                if (populationSize == 1)
+                for (var i = 1; i < populationSize; i++)
                 {
                     do
                     {
-                        child = VectorDrawingGenetics.Instance.Mutate(population.First().Value, bitmap.Width, bitmap.Height);
-                        childDistance = VectorDrawingGenetics.Instance.CalculateDistance(child, bitmap);
-                    } while (!DictionaryExtensions.TryAdd(population, childDistance, child));
-                }
-                else
-                {
-                    for (var i = 1; i < populationSize; i++)
-                    {
-                        do
-                        {
-                            child = VectorDrawingGenetics.Instance.CrossOver(population.ElementAt(i - 1).Value, population.ElementAt(i).Value);
-                            child = VectorDrawingGenetics.Instance.Mutate(child, bitmap.Width, bitmap.Height);
-                            childDistance = VectorDrawingGenetics.Instance.CalculateDistance(child, bitmap);
-                        } while (!DictionaryExtensions.TryAdd(population, childDistance, child));
-                    }
-                    do
-                    {
-                        child = VectorDrawingGenetics.Instance.CrossOver(population.First().Value, population.Last().Value);
+                        child = VectorDrawingGenetics.Instance.CrossOver(population.ElementAt(i - 1).Value, population.ElementAt(i).Value);
                         child = VectorDrawingGenetics.Instance.Mutate(child, bitmap.Width, bitmap.Height);
                         childDistance = VectorDrawingGenetics.Instance.CalculateDistance(child, bitmap);
                     } while (!DictionaryExtensions.TryAdd(population, childDistance, child));
                 }
+                do
+                {
+                    child = VectorDrawingGenetics.Instance.CrossOver(population.First().Value, population.Last().Value);
+                    child = VectorDrawingGenetics.Instance.Mutate(child, bitmap.Width, bitmap.Height);
+                    childDistance = VectorDrawingGenetics.Instance.CalculateDistance(child, bitmap);
+                } while (!DictionaryExtensions.TryAdd(population, childDistance, child));
                 minDistance = population.Min(a => a.Key);
                 while (population.Count() > populationSize)
                 {
