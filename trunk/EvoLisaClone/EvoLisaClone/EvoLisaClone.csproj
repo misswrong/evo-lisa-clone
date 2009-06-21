@@ -12,8 +12,9 @@
     <AssemblyName>EvoLisaClone</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <SignAssembly>true</SignAssembly>
-    <AssemblyOriginatorKeyFile>EvoLisaClone.pfx</AssemblyOriginatorKeyFile>
+    <SignAssembly>false</SignAssembly>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -52,6 +53,7 @@
     <Compile Include="BrushGenetics.cs" />
     <Compile Include="ColoredTriangle.cs" />
     <Compile Include="ColoredTriangleGenetics.cs" />
+    <Compile Include="IGenetics.cs" />
     <Compile Include="DictionaryExtensions.cs" />
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="GraphicsExtensions.cs" />
@@ -63,7 +65,7 @@
     <Compile Include="VectorDrawingGenetics.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="EvoLisaClone.pfx" />
+    <None Include="COPYING.LESSER" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(ProgramFiles)\MSBuild\Microsoft\StyleCop\v4.3\Microsoft.StyleCop.targets" />
