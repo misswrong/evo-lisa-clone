@@ -53,6 +53,7 @@
     <Compile Include="BrushGeneticsTest.cs" />
     <Compile Include="ColoredTriangleGeneticsTest.cs" />
     <Compile Include="ColoredTriangleTest.cs" />
+    <Compile Include="DictionaryExtensionsTest.cs" />
     <Compile Include="GraphicsExtensionsTest.cs" />
     <Compile Include="PointExtensionsTest.cs" />
     <Compile Include="PointGeneticsTest.cs" />
