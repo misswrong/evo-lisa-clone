@@ -17,10 +17,7 @@ namespace EvoLisaClone
 
         public override bool Equals(object obj)
         {
-            if (ReferenceEquals(null, obj)) return false;
-            if (ReferenceEquals(this, obj)) return true;
-            if (obj.GetType() != typeof (VectorDrawing)) return false;
-            return Equals((VectorDrawing) obj);
+            return this.Equals(obj as VectorDrawing);
         }
 
         public override int GetHashCode()
