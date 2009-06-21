@@ -65,7 +65,7 @@ namespace EvoLisaClone
                     }
                 }
             }
-            return population[minDistance];
+            return population.OrderBy(a => a.Key).First().Value;
         }
     }
 }
