@@ -174,6 +174,20 @@ namespace EvoLisaCloneTest
         }
 
         /// <summary>
+        ///A test for Equals
+        ///</summary>
+        [TestMethod()]
+        public void EqualsVectorDrawingTest6()
+        {
+            VectorDrawing target = new VectorDrawing() { Vectors = new ColoredTriangle[] { new ColoredTriangle() { Brush = Brushes.Black, Vertices = new Point[] { new Point(0, 0), new Point(1, 1), new Point(0, 1) } } } };
+            VectorDrawing other = target;
+            bool expected = true;
+            bool actual;
+            actual = target.Equals(other);
+            Assert.AreEqual(expected, actual);
+        }
+
+        /// <summary>
         ///A test for VectorDrawing Constructor
         ///</summary>
         [TestMethod()]
