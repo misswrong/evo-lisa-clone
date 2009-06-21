@@ -7,6 +7,8 @@ using System.IO;
 using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Imaging;
+using System.Windows.Forms;
+using System.Globalization;
 
 namespace EvoLisaProfiler
 {
@@ -14,21 +16,22 @@ namespace EvoLisaProfiler
     {
         static void Main(string[] args)
         {
-            BitmapCloner target = new BitmapCloner();
             var fileName = "smile.png";
             using (var bitmap = new Bitmap(fileName))
             {
-                long expectedDistance = 1024 * 12;
-                var actual = target.Clone(bitmap, expectedDistance, 2);
-                var actualDistance = VectorDrawingGenetics.Instance.CalculateDistance(actual, bitmap);
-                using (var cloneBitmap = new Bitmap(bitmap.Width, bitmap.Height))
+                var bestTiming = long.MaxValue;
+                var lastTiming = bestTiming;
+                var population = 0;
+                do
                 {
-                    using (var graphics = Graphics.FromImage(cloneBitmap))
-                    {
-                        GraphicsExtensions.RasterizeVectorDrawing(graphics, actual);
-                    }
-                    cloneBitmap.Save("smile.bmp", ImageFormat.Bmp);
-                }
+                    bestTiming = lastTiming;
+                    population++;
+                    var stopwatch = Stopwatch.StartNew();
+                    long expectedDistance = 1024 * 16;
+                    new BitmapCloner().Clone(bitmap, expectedDistance, population);
+                    lastTiming = stopwatch.ElapsedTicks;
+                } while (lastTiming < bestTiming);
+                MessageBox.Show((population - 1).ToString(CultureInfo.InvariantCulture));
             }
         }
     }
