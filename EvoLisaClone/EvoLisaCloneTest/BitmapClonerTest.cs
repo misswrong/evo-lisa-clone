@@ -180,6 +180,24 @@ namespace EvoLisaCloneTest
         }
 
         /// <summary>
+        ///A test for Clone
+        ///</summary>
+        [TestMethod()]
+        public void CloneTest6()
+        {
+            BitmapCloner target = new BitmapCloner();
+            var width = 2;
+            var height = 2;
+            var population = 1024;
+            using (var bitmap = new Bitmap(width, height))
+            {
+                long distance = long.MaxValue;
+                var actual = target.Clone(bitmap, distance, population);
+                Assert.IsTrue(actual.Vectors.Any());
+            }
+        }
+
+        /// <summary>
         ///A test for BitmapCloner Constructor
         ///</summary>
         [TestMethod()]

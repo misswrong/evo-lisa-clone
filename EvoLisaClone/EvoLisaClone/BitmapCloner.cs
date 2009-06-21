@@ -15,7 +15,7 @@ namespace EvoLisaClone
             {
                 var newborn = VectorDrawingGenetics.Instance.Create(bitmap.Width, bitmap.Height, 1);
                 var newbornDistance = VectorDrawingGenetics.Instance.CalculateDistance(newborn, bitmap);
-                population.Add(newbornDistance, newborn);
+                DictionaryExtensions.TryAdd(population, newbornDistance, newborn);
             }
             var minDistance = 0L;
             while (!population.Where(a => a.Key <= distance).Any())
