@@ -1,4 +1,4 @@
-﻿// <copyright file="GraphicsExtensions.cs" company="Jader DIas">
+﻿// <copyright file="IGenetics.cs" company="Jader DIas">
 // Copyright (c) Jader Dias. All rights reserved.
 // </copyright>
 // <author>Jader Dias</author>
@@ -28,19 +28,12 @@ using System.Drawing;
 
 namespace EvoLisaClone
 {
-    public static class GraphicsExtensions
+    public interface IGenetics<T>
     {
-        public static void FillColoredTriangle(Graphics graphics, ColoredTriangle coloredTriangle)
-        {
-            graphics.FillPolygon(coloredTriangle.Brush, coloredTriangle.Vertices.ToArray());
-        }
+        T CreateRandom();
 
-        public static void RasterizeVectorDrawing(Graphics graphics, VectorDrawing vectorDrawing)
-        {
-            foreach (var coloredTriangle in vectorDrawing.Vectors)
-            {
-                FillColoredTriangle(graphics, coloredTriangle);
-            }
-        }
+        T Mutate(T dna);
+
+        T Recombine(T dna1, T dna2);
     }
 }
