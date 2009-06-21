@@ -8,6 +8,18 @@ namespace EvoLisaClone
 {
     public class BitmapCloner
     {
+        void CrossOverMutateAndAdd(Dictionary<long, VectorDrawing> population, int indexA, int indexB, Bitmap bitmap)
+        {
+            VectorDrawing child;
+            long childDistance;
+            do
+            {
+                child = VectorDrawingGenetics.Instance.CrossOver(population.ElementAt(indexA).Value, population.ElementAt(indexB).Value);
+                child = VectorDrawingGenetics.Instance.Mutate(child, bitmap.Width, bitmap.Height);
+                childDistance = VectorDrawingGenetics.Instance.CalculateDistance(child, bitmap);
+            } while (!DictionaryExtensions.TryAdd(population, childDistance, child));
+        }
+
         public VectorDrawing Clone(Bitmap bitmap, long distance, int populationSize)
         {
             var population = new Dictionary<long, VectorDrawing>();
@@ -20,23 +32,11 @@ namespace EvoLisaClone
             var minDistance = 0L;
             while (!population.Where(a => a.Key <= distance).Any())
             {
-                long childDistance;
-                VectorDrawing child = new VectorDrawing();
                 for (var i = 1; i < populationSize; i++)
                 {
-                    do
-                    {
-                        child = VectorDrawingGenetics.Instance.CrossOver(population.ElementAt(i - 1).Value, population.ElementAt(i).Value);
-                        child = VectorDrawingGenetics.Instance.Mutate(child, bitmap.Width, bitmap.Height);
-                        childDistance = VectorDrawingGenetics.Instance.CalculateDistance(child, bitmap);
-                    } while (!DictionaryExtensions.TryAdd(population, childDistance, child));
+                    this.CrossOverMutateAndAdd(population, i - 1, i, bitmap);
                 }
-                do
-                {
-                    child = VectorDrawingGenetics.Instance.CrossOver(population.First().Value, population.Last().Value);
-                    child = VectorDrawingGenetics.Instance.Mutate(child, bitmap.Width, bitmap.Height);
-                    childDistance = VectorDrawingGenetics.Instance.CalculateDistance(child, bitmap);
-                } while (!DictionaryExtensions.TryAdd(population, childDistance, child));
+                this.CrossOverMutateAndAdd(population, 0, populationSize - 1, bitmap);
                 minDistance = population.Min(a => a.Key);
                 while (population.Count() > populationSize)
                 {
