@@ -98,7 +98,7 @@ namespace EvoLisaCloneTest
             {
                 long expectedDistance = 0L;
                 var actual = target.Clone(bitmap, expectedDistance, 1);
-                var actualDistance = VectorDrawingGenetics.Instance.CalculateDistance(actual, bitmap);
+                var actualDistance = VectorDrawingGenetics.Instance.CalculateFitness(actual, bitmap);
                 Assert.IsTrue(actualDistance <= expectedDistance);
             }
         }
@@ -120,7 +120,7 @@ namespace EvoLisaCloneTest
                 }
                 long expectedDistance = 512;
                 var actual = target.Clone(bitmap, expectedDistance, 1);
-                var actualDistance = VectorDrawingGenetics.Instance.CalculateDistance(actual, bitmap);
+                var actualDistance = VectorDrawingGenetics.Instance.CalculateFitness(actual, bitmap);
                 Assert.IsTrue(actualDistance <= expectedDistance);
             }
         }
@@ -139,7 +139,7 @@ namespace EvoLisaCloneTest
                 var stopwatch = Stopwatch.StartNew();
                 var actual = target.Clone(bitmap, expectedDistance, 1);
                 stopwatch.Stop();
-                var actualDistance = VectorDrawingGenetics.Instance.CalculateDistance(actual, bitmap);
+                var actualDistance = VectorDrawingGenetics.Instance.CalculateFitness(actual, bitmap);
                 Assert.IsTrue(actualDistance <= expectedDistance);
                 using (var cloneBitmap = new Bitmap(bitmap.Width, bitmap.Height))
                 {
@@ -166,7 +166,7 @@ namespace EvoLisaCloneTest
                 var stopwatch = Stopwatch.StartNew();
                 var actual = target.Clone(bitmap, expectedDistance, 2);
                 stopwatch.Stop();
-                var actualDistance = VectorDrawingGenetics.Instance.CalculateDistance(actual, bitmap);
+                var actualDistance = VectorDrawingGenetics.Instance.CalculateFitness(actual, bitmap);
                 Assert.IsTrue(actualDistance <= expectedDistance);
                 using (var cloneBitmap = new Bitmap(bitmap.Width, bitmap.Height))
                 {
