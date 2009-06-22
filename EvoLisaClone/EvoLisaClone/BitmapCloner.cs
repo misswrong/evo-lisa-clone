@@ -38,7 +38,7 @@ namespace EvoLisaClone
             {
                 child = VectorDrawingGenetics.Instance.Recombine(population.ElementAt(indexA).Value, population.ElementAt(indexB).Value);
                 child = VectorDrawingGenetics.Instance.Mutate(child, bitmap.Width, bitmap.Height);
-                childDistance = VectorDrawingGenetics.Instance.CalculateDistance(child, bitmap);
+                childDistance = VectorDrawingGenetics.Instance.CalculateFitness(child, bitmap);
             } while (!DictionaryExtensions.TryAdd(population, childDistance, child));
         }
 
@@ -48,7 +48,7 @@ namespace EvoLisaClone
             while (population.Count < populationSize)
             {
                 var newborn = VectorDrawingGenetics.Instance.Create(bitmap.Width, bitmap.Height, 1);
-                var newbornDistance = VectorDrawingGenetics.Instance.CalculateDistance(newborn, bitmap);
+                var newbornDistance = VectorDrawingGenetics.Instance.CalculateFitness(newborn, bitmap);
                 DictionaryExtensions.TryAdd(population, newbornDistance, newborn);
             }
             var minDistance = 0L;
