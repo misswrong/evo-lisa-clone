@@ -1,6 +1,11 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <TestRunConfiguration name="Local Test Run" id="5b017ef1-d0d7-4464-9d44-881a4f99e074" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2006">
   <Description>This is a default test run configuration for a local test run.</Description>
+  <CodeCoverage enabled="true">
+    <Regular>
+      <CodeCoverageItem binaryFile="EvoLisaClone\bin\Debug\EvoLisaClone.dll" pdbFile="EvoLisaClone\bin\Debug\EvoLisaClone.pdb" instrumentInPlace="true" />
+    </Regular>
+  </CodeCoverage>
   <Deployment>
     <DeploymentItem filename="EvoLisaCloneTest\App_Data\" />
   </Deployment>

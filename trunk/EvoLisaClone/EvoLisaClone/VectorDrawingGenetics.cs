@@ -51,7 +51,7 @@ namespace EvoLisaClone
             get { return instance; }
         }
 
-        public long CalculateDistance(VectorDrawing vectorDrawing, Bitmap bitmap)
+        public long CalculateFitness(VectorDrawing vectorDrawing, Bitmap bitmap)
         {
             if (ReferenceEquals(null, bitmap)) return 0L;
             var distance = 0L;
