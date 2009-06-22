@@ -75,8 +75,7 @@ namespace EvoLisaCloneTest
             VectorDrawingGenetics target = VectorDrawingGenetics.Instance;
             VectorDrawing vectorDrawing = null;
             long expected = 0;
-            long actual;
-            actual = target.CalculateFitness(vectorDrawing, null);
+            var actual = target.CalculateFitness(vectorDrawing, null);
             Assert.AreEqual(expected, actual);
         }
 
@@ -107,8 +106,7 @@ namespace EvoLisaCloneTest
             {
                 VectorDrawingGenetics target = VectorDrawingGenetics.Instance;
                 long expected = color.R + color.G + color.B;
-                long actual;
-                actual = target.CalculateFitness(vectorDrawing, bitmap);
+                var actual = target.CalculateFitness(vectorDrawing, bitmap);
                 Assert.AreEqual(expected, actual);
             }
         }
@@ -143,8 +141,7 @@ namespace EvoLisaCloneTest
                 }
                 VectorDrawingGenetics target = VectorDrawingGenetics.Instance;
                 long expected = 0;
-                long actual;
-                actual = target.CalculateFitness(vectorDrawing, bitmap);
+                var actual = target.CalculateFitness(vectorDrawing, bitmap);
                 Assert.AreEqual(expected, actual);
             }
         }
