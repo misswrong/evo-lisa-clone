@@ -175,10 +175,10 @@ namespace EvoLisaCloneTest
         }
 
         /// <summary>
-        ///A test for CrossOver
+        ///A test for Recombine
         ///</summary>
         [TestMethod()]
-        public void CrossOverTest1()
+        public void RecombineTest1()
         {
             var target = VectorDrawingGenetics.Instance;
             var width = 2;
@@ -186,15 +186,15 @@ namespace EvoLisaCloneTest
             var length = 1;
             var drawingA = target.Create(width, height, length);
             var drawingB = target.Create(width, height, length);
-            var actual = target.CrossOver(drawingA, drawingB);
+            var actual = target.Recombine(drawingA, drawingB);
             Assert.AreEqual(drawingA, actual);
         }
 
         /// <summary>
-        ///A test for CrossOver
+        ///A test for Recombine
         ///</summary>
         [TestMethod()]
-        public void CrossOverTest2()
+        public void RecombineTest2()
         {
             var target = VectorDrawingGenetics.Instance;
             var width = 2;
@@ -202,7 +202,7 @@ namespace EvoLisaCloneTest
             var length = 2;
             var drawingA = VectorDrawingGenetics.Instance.Create(width, height, length);
             var drawingB = VectorDrawingGenetics.Instance.Create(width, height, length);
-            var actual = target.CrossOver(drawingA, drawingB);
+            var actual = target.Recombine(drawingA, drawingB);
             Assert.AreNotEqual(drawingA, actual);
             Assert.AreNotEqual(drawingB, actual);
             Assert.AreEqual(drawingA.Vectors.Count(), actual.Vectors.Count());
@@ -212,10 +212,10 @@ namespace EvoLisaCloneTest
         }
 
         /// <summary>
-        ///A test for CrossOver
+        ///A test for Recombine
         ///</summary>
         [TestMethod()]
-        public void CrossOverTest3()
+        public void RecombineTest3()
         {
             var target = VectorDrawingGenetics.Instance;
             var width = 2;
@@ -224,7 +224,7 @@ namespace EvoLisaCloneTest
             var lengthB = 3;
             var drawingA = VectorDrawingGenetics.Instance.Create(width, height, lengthA);
             var drawingB = VectorDrawingGenetics.Instance.Create(width, height, lengthB);
-            var actual = target.CrossOver(drawingA, drawingB);
+            var actual = target.Recombine(drawingA, drawingB);
             Assert.IsTrue(actual.Vectors.Count() == Math.Max(lengthA, lengthB));
         }
 
